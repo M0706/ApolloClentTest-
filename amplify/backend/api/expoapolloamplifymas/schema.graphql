@@ -1,0 +1,40 @@
+type Blog
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: owner, operations: [create, update, delete, read] }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  owner: String
+  posts: [Post] @connection(name: "BlogPosts")
+}
+type Post
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: owner, operations: [create, update, delete, read] }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  blog: Blog @connection(name: "BlogPosts")
+  owner: String
+  comments: [Comment] @connection(name: "PostComments")
+}
+type Comment
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: owner, operations: [create, update, delete, read] }
+    ]
+  ) {
+  id: ID!
+  content: String
+  owner: String
+  post: Post @connection(name: "PostComments")
+}

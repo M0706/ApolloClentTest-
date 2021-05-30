@@ -1,0 +1,35 @@
+{
+  "auth": {
+    "expoapolloamplifymas8a6ab41f": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "api": {
+    "expoapolloamplifymas": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authexpoapolloamplifymas8a6ab41f"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 2,
+                "description": "keyblog"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
