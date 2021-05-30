@@ -1,4 +1,3 @@
-
 import React from "react";
 import { StyleSheet } from "react-native";
 import Amplify, { Auth } from "aws-amplify";
@@ -15,6 +14,7 @@ import { resolvers } from "./src/clientResolvers/sessionResolver";
 import { authClient } from "./src/config";
 
 Amplify.configure(config);
+authClient.defaultOptions.query;
 
 const AppContainer = createAppContainer(MainNavigation);
 
